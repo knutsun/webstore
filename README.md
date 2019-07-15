@@ -22,6 +22,8 @@ Maven setup
 - `mvn --version` to verify version
 - `export PATH=/Users/chaz/Developer/apache-maven-3.6.1/bin:$PATH` to set path to Maven /bin/ directory (Wherever you downloaded it to)
 
+
+# Useful info
 Common Maven commands
 - `mvn clean dependency:tree` - to refresh your Maven dependencies if you've just added a new one and a warning/error displays
 - `mvn clean compile` - to see if your project will compile
