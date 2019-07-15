@@ -18,11 +18,12 @@ class HomeController{
 	 public HttpEntity<MessageService> message(@RequestParam(value = "name",
 	 	required = false, defaultValue = "user") String name) {
 	 	 
-		 MessageService message = new MessageService("Hello " + name);
+		 MessageService message = new MessageService();
+		 message.setMessage("Hello " + name);
 		 
 	 	 message.add(linkTo(methodOn(HomeController.class)
-	 			 .message(name))
-	 			 .withSelfRel());
+	 			.message(name))
+	 			.withSelfRel());
 	 	 
 	 	 return new ResponseEntity<>(message, HttpStatus.OK);
 	 }
