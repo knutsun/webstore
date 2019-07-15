@@ -27,5 +27,5 @@ class HomeController{
 	 	 
 	 	 return new ResponseEntity<>(message, HttpStatus.OK);
 	 }
-	 
+	
 }
