@@ -1,13 +1,13 @@
-# Webstore
+# Webstore demo
 A webstore project built using the Spring Boot framework
 
-How to Run Project
+# How to Run Project
 Clone repository to local computer
 Navigate to webstore/src/main/java/com/store/StoreApplication.java
 Select Run > Run As > Spring Boot App
 
 
-Project Requirements
+# Project Requirements
 Development environment:
 IDE: Spring Tools Suite 4
 
