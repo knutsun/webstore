@@ -10,6 +10,8 @@ A webstore project built using the Spring Boot framework
 # Project Requirements
 Development environment:
 - IDE: Spring Tools Suite 4
+  - Install SonarLint, a code quality analyzer
+    - Help > Eclipse Marketplace > Find `SonarLint` (current version 4.1)
 - Java version 10.0.2 (latest stable)
 - Apache Maven version 3.6.1 (latest stable)
 
