@@ -9,12 +9,13 @@ A webstore project built using the Spring Boot framework
 
 # Project Requirements
 Development environment:
-- IDE: Spring Tools Suite 4
+- IDE: Spring Tools Suite 4 
   - Install SonarLint, a code quality analyzer
-    - Help > Eclipse Marketplace > Find `SonarLint` (current version 4.1)
+    - `Help` > `Eclipse Marketplace` > `Find` "SonarLint" v4.1
 - Java version 10.0.2 (latest stable)
 - Apache Maven version 3.6.1 (latest stable)
 
+Spring Tools Suite 4 -- https://spring.io/tools
 Java Development Kit 8 -- https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 Maven -- https://maven.apache.org/download.cgi
 
