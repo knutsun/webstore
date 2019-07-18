@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class HomeController{
 
-	 @GetMapping("/")
-	 @ResponseBody
-	 public HttpEntity<MessageService> message(@RequestParam(value = "name",
-	 	required = false, defaultValue = "user") String name) {
-
-		 MessageService message = new MessageService();
-		 message.setMessage("Hello " + name);
-
-	 	 message.add(linkTo(methodOn(HomeController.class)
-	 			.message(name))
-	 			.withSelfRel());
-
-	 	 return new ResponseEntity<>(message, HttpStatus.OK);
-	 }
+//	 @GetMapping("/")
+//	 @ResponseBody
+//	 public HttpEntity<MessageService> message(@RequestParam(value = "name",
+//	 	required = false, defaultValue = "user") String name) {
+//
+//		 MessageService message = new MessageService();
+//		 message.setMessage("Hello " + name);
+//
+//	 	 message.add(linkTo(methodOn(HomeController.class)
+//	 			.message(name))
+//	 			.withSelfRel());
+//
+//	 	 return new ResponseEntity<>(message, HttpStatus.OK);
+//	 }
 
 }
