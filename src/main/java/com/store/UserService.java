@@ -6,10 +6,20 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UserService extends ResourceSupport{
 
-	public String getUserName(){
+	public Boolean isAuthenticated() {
 		 org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		 if (!(authentication instanceof AnonymousAuthenticationToken)) {
-		    String currentUserName = authentication.getName();
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	}
+	
+	public String getUserName(){
+		 
+		 if (isAuthenticated()) {
+		    String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
 		    return currentUserName;
 		 }
 		 else {
