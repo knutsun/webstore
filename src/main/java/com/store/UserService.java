@@ -5,13 +5,25 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 
 public class UserService extends ResourceSupport{
+	
 
+	public UserType getUserType() {
+		 if (isAuthenticated()) {
+			 return UserType.USER;
+		 }
+		 else {
+			 return UserType.VISITOR;
+		 }
+		
+	}
+	
 	public Boolean isAuthenticated() {
 		 org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		 if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			 return true;
 		 }
 		 else {
+			 
 			 return false;
 		 }
 	}
@@ -23,8 +35,7 @@ public class UserService extends ResourceSupport{
 		    return currentUserName;
 		 }
 		 else {
-			 String currentUserName = "user";
-			 return currentUserName;
+			 return null;
 		 } 
 	 }
 }
