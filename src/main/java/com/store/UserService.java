@@ -31,8 +31,7 @@ public class UserService extends ResourceSupport{
 	public String getUserName(){
 		 
 		 if (isAuthenticated()) {
-		    String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
-		    return currentUserName;
+		    return SecurityContextHolder.getContext().getAuthentication().getName();
 		 }
 		 else {
 			 return null;
