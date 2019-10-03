@@ -26,9 +26,14 @@ Maven setup
 
 # Useful info
 Common Maven commands
+- `mvn -v` - test the Maven installation by checking version
 - `mvn clean dependency:tree` - to refresh your Maven dependencies if you've just added a new one and a warning/error displays
 - `mvn clean compile` - to see if your project will compile
-
+- `mvn package` - The package goal will compile your Java code, run any tests, and finish by packaging the code up in a JAR file within the target directory. The name of the JAR file will be based on the project’s `<artifactId>` and `<version>`
+- To execute the JAR file run: `java -jar target/____.jar`
+- `mvn install` - compile, test, and package your project’s code and then copy it into the local dependency repository, ready for another project to reference it as a dependency. 
+- `mvn test` - compiles and runs all classes in src/test/java with a name matching *Test 
+  
 Common SQL commands
 - `mysql`
 - `show databases;`
