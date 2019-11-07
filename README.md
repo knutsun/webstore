@@ -4,11 +4,16 @@ A webstore project built using the Spring Boot framework
 # Spring Boot framework Official Documentation
 https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/
 
-# How to Run Project
+# How to Run Project in Spring Tools Suite 4 IDE
 - Clone repository to local computer
 - Navigate to `webstore/src/main/java/com/store/StoreApplication.java`
 - Select `Run` > `Run As` > `Spring Boot App`
 
+# How to Run Project in IntelliJ IDE
+- Clone repository to local computer
+- Navigate to `webstore/src/main/java/com/store/StoreApplication.java`
+- Select green arrow next to `main()` method of `StoreApplication.java`
+- Select `Run 'StoreApplication.main()'`
 
 # Project Requirements
 Development environment:
