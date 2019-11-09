@@ -10,32 +10,24 @@ public class UserService extends ResourceSupport{
 	
 
 	public UserType getUserType() {
-		 if (isAuthenticated()) {
-			 return UserType.USER;
-		 }
-		 else {
-			 return UserType.VISITOR;
-		 }
-		
+
+		return (isAuthenticated()) ? UserType.USER : UserType.VISITOR;	
+
 	}
-	
+
 	public boolean isAuthenticated() {
-		 org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		 if (!(authentication instanceof AnonymousAuthenticationToken)) {
-			 return true;
-		 }
-		 else {
-			 return false;
-		 }
+
+		org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		return (!(authentication instanceof AnonymousAuthenticationToken)) ? true : false;	
+
 	}
 	
 	public String getUserName(){
-		 
-		 if (isAuthenticated()) {
-		    return SecurityContextHolder.getContext().getAuthentication().getName();
-		 }
-		 else {
-			 return null;
-		 } 
-	 }
+
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+
+		return (isAuthenticated()) ? userName : null;	
+
+	}
 }
