@@ -9,28 +9,38 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.web.servlet.ViewResolver;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
-            .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .anyRequest().authenticated()
-                .and()
             .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
+            .and()
+                .logout()
+                .logoutSuccessUrl("/")
+            .and()
+                .rememberMe()
+                .tokenValiditySeconds(60)
+                .key("webstorePrivateKey")
+            .and()
+                .authorizeRequests()
+                .antMatchers("/dash").authenticated()
+                .anyRequest().permitAll();
     }
 
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
+
         UserDetails user =
              User.withDefaultPasswordEncoder()
                 .username("dev")
@@ -40,4 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(user);
     }
+
+
 }

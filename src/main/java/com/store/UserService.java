@@ -6,28 +6,25 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 
-public class UserService extends ResourceSupport{
-	
+public class UserService extends ResourceSupport {
+
 
 	public UserType getUserType() {
-
-		return (isAuthenticated()) ? UserType.USER : UserType.VISITOR;	
-
+		return (isAuthenticated()) ? UserType.USER : UserType.VISITOR;
 	}
 
 	public boolean isAuthenticated() {
-
 		org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-		return (!(authentication instanceof AnonymousAuthenticationToken)) ? true : false;	
-
+		return (!(authentication instanceof AnonymousAuthenticationToken)) ? true : false;
 	}
-	
-	public String getUserName(){
 
+	public String getUserName() {
 		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		return (isAuthenticated()) ? userName : null;
+	}
 
-		return (isAuthenticated()) ? userName : null;	
-
+	public String isRememberMe() {
+		Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
+		return (isAuthenticated()) ? (String) details : null;
 	}
 }
