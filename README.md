@@ -7,13 +7,13 @@ https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/
 # Cloning Webstore to IntelliJ on Windows
 
 IntelliJ Git setup:
-- To connect Git to IntelliJ enter `Ctrl Alt s` > `version control` > `Git`
+- To connect Git to IntelliJ navigate to the IntelliJ settings page(Shortcut `Ctrl Alt s`), Select `version control` > `Git`)
 - Select the `...` in the `Path to Git executable` and enter the `git.exe` file
-- `git.exe` can be found in `Git` > `bin` 
+- `git.exe` can be found in `Git` > `bin
 
 Cloning to IntelliJ:
-- From the main menu select `VCS` > `Checkout from version control` > `Git`
-- Enter Webstore git URL in the URL text box and assign a directory(If asked sign into your Github account)
+- From the top main menu bar select `VCS` > `Checkout from version control` > `Git`
+- Enter Webstore git URL `https://github.com/knutsun/webstore.git` in the URL text box and assign a directory(If asked sign into your Github account)
 - Select `Clone` to begin installation
 
 If necessary a JDK may need to be linked to the Webstore:
