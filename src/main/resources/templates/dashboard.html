@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Home</title>
         <link rel="stylesheet"
@@ -7,7 +9,12 @@
               th:href="@{/assets/css/style.css}" />
     </head>
     <body>
-        <h1 id="header" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <div sec:authorize="isAuthenticated()">
+            <h2>
+                Hi <span sec:authentication="name">guy</span>!
+            </h2><br />
+            Your remote IP is <span sec:authentication="details.remoteAddress">?</span><br />
+        </div>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out" />
         </form>
