@@ -1,13 +1,10 @@
 package com.store;
 
-
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.security.Principal;
-
 
 
 public class UserService extends ResourceSupport {
