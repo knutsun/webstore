@@ -2,6 +2,7 @@ package com.store;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -9,15 +10,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.web.servlet.ViewResolver;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig
+        extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,19 +31,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/dash").authenticated()
                 .anyRequest().permitAll();
+
     }
+
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//
+//        auth.inMemoryAuthentication()
+//                .withUser("chaz")
+//                .password("chaz123")
+//                .roles("ADMIN", "USER");
+//
+//
+//    }
 
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
 
-        UserDetails user =
-             User.withDefaultPasswordEncoder()
-                .username("dev")
-                .password("dev123")
-                .roles("USER")
-                .build();
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(users.username("user").password("password").roles("USER").build());
+        manager.createUser(users.username("admin").password("password").roles("USER", "ADMIN").build());
+        return manager;
 
-        return new InMemoryUserDetailsManager(user);
     }
 }
