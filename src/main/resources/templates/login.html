@@ -1,30 +1,51 @@
-<html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="https://www.thymeleaf.org"
+       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link rel="stylesheet"
+          type="text/css"
+          id="bootstrap-css"
+          th:href="@{/assets/css/loginStyle.css}" />
+</head>
 <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="@{/assets/img/test.png}" th:src="@{/assets/img/test.png}"/>
+            </div>
+
+            <!-- Login Form -->
+            <form th:action="@{/login}" method="post">
+
+                    <input type="text"
+                           id="login"
+                           class="fadeIn second"
+                           name="username"
+                           placeholder="username">
+
+                    <input type="password"
+                           id="password"
+                           class="fadeIn third"
+                           name="password"
+                           placeholder="password">
+
+                <div>
+                    <input type="submit"
+                           class="fadeIn fourth"
+                           value="Log In"/>
+
+                </div>
+            </form>
         </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-
-        <form th:action="@{/login}" method="post">
-            <div>
-                <label> Username : <input type="text" name="username"/>
-                </label>
-            </div>
-            <div>
-                <label> Password: <input type="password" name="password"/>
-                </label>
-            </div>
-
-            <div>
-                <input type="submit" value="Sign In"/>
-                <input id="remember_me" name="remember-me" type="checkbox"/>
-                <label for="remember_me" class="inline">Remember me</label>
-            </div>
-
-        </form>
-
-        <a href="@{/logout}">Logout</a>
+    </div>
 </body>
 </html>

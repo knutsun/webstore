@@ -24,6 +24,7 @@ public class WebSecurityConfig
     protected void configure(HttpSecurity http) throws Exception {
         http
             .formLogin()
+                .loginPage("/login")
             .and()
                 .logout()
                 .logoutSuccessUrl("/")
@@ -31,7 +32,6 @@ public class WebSecurityConfig
                 .authorizeRequests()
                 .antMatchers("/dash").authenticated()
                 .anyRequest().permitAll();
-
     }
 
     @Autowired
